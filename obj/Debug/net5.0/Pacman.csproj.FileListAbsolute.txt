@@ -1,0 +1,16 @@
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/Pacman
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/Pacman.deps.json
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/Pacman.runtimeconfig.json
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/Pacman.runtimeconfig.dev.json
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/Pacman.dll
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/ref/Pacman.dll
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net5.0/Pacman.pdb
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.csproj.AssemblyReference.cache
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.AssemblyInfoInputs.cache
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.AssemblyInfo.cs
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.csproj.CoreCompileInputs.cache
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.dll
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/ref/Pacman.dll
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.pdb
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net5.0/Pacman.genruntimeconfig.cache
