@@ -76,13 +76,13 @@ namespace Pacman
             Tile StartVertex = mazeGraph.GetStartTile();
 
             List<Tile> visited = new List<Tile>();
-            PriorityQueue<Tile, int> unvisited = new PriorityQueue<Tile, int>();
+            Dictionary<Tile, int> unvisited = new Dictionary<Tile, int>();
 
-            unvisited.Enqueue(StartVertex, getManhatenDistance(StartVertex, Target));
+            unvisited.Add(StartVertex, getManhatenDistance(StartVertex, Target));
 
             while ((unvisited.Count != 0) && (!visited.Contains(Target)))
             {
-                Tile HeadofUnvisited = unvisited.Dequeue();
+                Tile HeadofUnvisited = DequeuePQ(unvisited).Key;
                 visited.Add(HeadofUnvisited);
                 if (HeadofUnvisited.Equals(Target))
                 {
@@ -96,7 +96,7 @@ namespace Pacman
                     {
                         if (!visited.Contains(neighbour))
                         {
-                            unvisited.Enqueue(neighbour, getManhatenDistance(neighbour, Target));
+                            EnqueuePQ(unvisited, neighbour, getManhatenDistance(neighbour, Target));
                         }
                     }
                 }
@@ -105,7 +105,31 @@ namespace Pacman
 
             return visited;
         }
+        public static KeyValuePair<Tile, int> DequeuePQ(Dictionary<Tile, int> priorityQueue)
+        {
+            KeyValuePair<Tile, int> result = new KeyValuePair<Tile, int>(null, -1);
+            foreach (KeyValuePair<Tile, int> x in priorityQueue)
+            {
+                if (x.Value < result.Value)
+                {
+                    result = x;
+                }
+            }
+            return result;
+        }
+        public static void EnqueuePQ(Dictionary<Tile, int> priorityQueue, Tile tile, int priority)
+        {
 
+            foreach (KeyValuePair<Tile, int> x in priorityQueue)
+            {
+
+                if (x.Key.Equals(tile) && x.Value > priority)
+                {
+                    priorityQueue.Add(tile, priority);
+                }
+                else if (x.)
+            }
+        }
         public static int getManhatenDistance(Tile from, Tile to)
         {
             int dx = Math.Abs(from.col - to.col);
@@ -114,5 +138,6 @@ namespace Pacman
 
             return dx + dy;
         }
+
     }
 }

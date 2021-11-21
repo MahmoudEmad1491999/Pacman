@@ -7,9 +7,8 @@ namespace Pacman
     {
         static void Main(string[] args)
         {
-            Problem problem = new Problem(args[0], 23, 61);
+            Problem problem = new Problem(args[0], 20, 37);
             Maze maze = new Maze(problem);
-            // Console.WriteLine(maze.MazeString);
             MazeGraph mazeGraph = new MazeGraph(maze);
             // foreach (Tile node in mazeGraph.GetOpenTiles())
             // {
@@ -21,28 +20,30 @@ namespace Pacman
             // }
 
             // Console.WriteLine(maze.getAllTargets()[0]);
-            // Console.WriteLine(maze.getAllTargets()[1]);
-            List<Tile> test1 = Search.BreadthFirstSearch(mazeGraph, maze.getAllTargets()[0]);
-            List<Tile> test2 = Search.DepthFirstSearch(mazeGraph, maze.getAllTargets()[0]);
+            // Console.WriteLine(maze.getStartTile());
+            // // Console.WriteLine(maze.getAllTargets()[1]);
+            // List<Tile> test1 = Search.BreadthFirstSearch(mazeGraph, maze.getAllTargets()[0]);
+            // List<Tile> test2 = Search.DepthFirstSearch(mazeGraph, maze.getAllTargets()[0]);
             List<Tile> test3 = Search.GreedyBestFirstSearch(mazeGraph, maze.getAllTargets()[0]);
-            Console.WriteLine(test1.Count);
-            Console.WriteLine(test2.Count);
-            Console.WriteLine(test3.Count);
+            // Console.WriteLine(test1.Count);
+            // Console.WriteLine(test2.Count);
+            // Console.WriteLine(test3.Count);
             foreach (Tile t in test3)
             {
-                Console.Write(t + "--->");
+                Console.Write(t);
             };
+            // System.Console.Write("///////////////////////////////");
+            // foreach (Tile t in test1)
+            // {
+            //     Console.Write(t);
+            // };
+            // System.Console.Write("///////////////////////////////");
+            // foreach (Tile t in test2)
+            // {
+            //     Console.Write(t);
+            // };
+            // System.Console.Write("///////////////////////////////");
 
-            foreach (Tile t in test1)
-            {
-                Console.Write(t + "--->");
-            };
-            foreach (Tile t in test2)
-            {
-                Console.Write(t + "--->");
-            };
-
-            Console.WriteLine();
         }
     }
 }

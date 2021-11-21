@@ -37,7 +37,7 @@ namespace Pacman
                         );
 
                 }
-                else if (MazeString[index] == 'p')
+                else if (MazeString[index] == 'P')
                 {
                     MazeBoard[row].Insert(
                         col,
@@ -59,10 +59,13 @@ namespace Pacman
                         new Tile(row, col, TileType.OPEN_PATH)
                         );
                 }
-                else if (MazeString[index] == '\n') { }
+                else if (MazeString[index] == '\n')
+                {
+
+                }
                 else
                 {
-                    throw new Exception("Undefined Character at:" + index);
+                    throw new Exception();
                 }
             }
         }
@@ -132,6 +135,19 @@ namespace Pacman
             }
             return false;
         }
-
+        public Tile getStartTile()
+        {
+            foreach (List<Tile> row in MazeBoard)
+            {
+                foreach (Tile tile in row)
+                {
+                    if (tile.type == TileType.START_POINT)
+                    {
+                        return tile;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
