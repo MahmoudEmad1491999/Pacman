@@ -55,11 +55,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/Pacman.csproj",
+      "projectUniqueName": "/home/mahmoudemad/Documents/MahmoudAtif/Pacman/Pacman.csproj",
       "projectName": "Pacman",
-      "projectPath": "/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/Pacman.csproj",
+      "projectPath": "/home/mahmoudemad/Documents/MahmoudAtif/Pacman/Pacman.csproj",
       "packagesPath": "/home/mahmoudemad/.nuget/packages/",
-      "outputPath": "/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/",
+      "outputPath": "/home/mahmoudemad/Documents/MahmoudAtif/Pacman/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/mahmoudemad/.nuget/NuGet/NuGet.Config"

@@ -110,7 +110,7 @@ namespace Pacman
             List<Tile> result = new List<Tile>();
             foreach (Tile neighbour in neighbours)
             {
-                if (isReachable(node, neighbour))
+                if (neighbour.type != TileType.WALL)
                 {
                     result.Add(neighbour);
                 }
@@ -119,15 +119,15 @@ namespace Pacman
             return result;
         }
 
-        public bool isReachable(Tile from, Tile to)
+        public bool isReachable(Tile target, Tile source)
         {
-            List<Tile> neighbours = getAllNeighbours(from);
+            List<Tile> neighbours = getAllNeighbours(source);
             if (
-                neighbours.Contains(to) &&
+                neighbours.Contains(target) &&
                 (
-                (to.type == TileType.FOOD) ||
-                (to.type == TileType.OPEN_PATH) ||
-                (to.type == TileType.START_POINT)
+                (target.type == TileType.FOOD) ||
+                (target.type == TileType.OPEN_PATH) ||
+                (target.type == TileType.START_POINT)
                 )
             )
             {

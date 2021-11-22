@@ -18,9 +18,9 @@ namespace Pacman
                 Tile HeadofUnvisited = unvisited.Pop();
                 visited.Add(HeadofUnvisited);
                 path.Add(HeadofUnvisited);
-                List<Tile> Neighbours = mazeGraph.maze.getAllReachable(HeadofUnvisited);
+                List<Tile> ReachableNeighbours = mazeGraph.maze.getAllReachable(HeadofUnvisited);
 
-                foreach (Tile neighbour in Neighbours)
+                foreach (Tile neighbour in ReachableNeighbours)
                 {
                     if (!unvisited.Contains(neighbour) && !visited.Contains(neighbour))
                     {
