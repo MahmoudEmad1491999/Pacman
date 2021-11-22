@@ -13,3 +13,5 @@
 /mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net6.0/ref/Pacman.dll
 /mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net6.0/Pacman.pdb
 /mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net6.0/Pacman.genruntimeconfig.cache
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/bin/Debug/net6.0/PriorityQueue.dll
+/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/obj/Debug/net6.0/Pacman.csproj.CopyComplete

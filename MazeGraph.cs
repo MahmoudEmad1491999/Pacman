@@ -39,12 +39,7 @@ namespace Pacman
 
         public Tile GetStartTile()
         {
-            GetOpenTiles();
-            if (StartTile == null)
-            {
-                StartTile = OpenTiles.Find((Tile possible) => possible.type == TileType.START_POINT);
-            }
-            return StartTile;
+            return maze.getStartTile();
         }
         public List<Edge> GetEdges()
         {
@@ -81,6 +76,10 @@ namespace Pacman
                     }
                 }
             }
+        }
+        public List<Tile> getAllTargets()
+        {
+            return maze.getAllTargets();
         }
     }
 

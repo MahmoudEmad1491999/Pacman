@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/SRmgk4tCOiv2BxbWAwcY3PuU1g0XekZOqrDaGv5lEp7GHrAiutYHCVoJo6RUEr52cORdrNdkA0PQgzAWOkjyg==",
+  "dgSpecHash": "gMT+oCaBnxMuQtXgJW5OuzJnCDbHdhetA3P6gtGII3r05epPrsYXY49zgx2qIcBl0LulE4qXzIcOdWZJr3Q+IA==",
   "success": true,
   "projectFilePath": "/mnt/Data/DevelopmentDir/ProjectMahmoudAtif/CSharp/Pacman/Pacman.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/mahmoudemad/.nuget/packages/optimizedpriorityqueue/5.1.0/optimizedpriorityqueue.5.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

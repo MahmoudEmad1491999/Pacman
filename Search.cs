@@ -2,23 +2,45 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-
+using Priority_Queue;
 namespace Pacman
 {
     public class Search
     {
-        public static List<Tile> BreadthFirstSearch(MazeGraph mazeGraph, Tile Target)
+        public static List<Tile> DepthFirstSearch(MazeGraph mazeGraph, Tile start, Tile target)
         {
-            List<Tile> Verticies = mazeGraph.GetOpenTiles();
-            List<Edge> Edges = mazeGraph.GetEdges();
+            List<Tile> visited = new List<Tile>();
+            Stack<Tile> unvisited = new Stack<Tile>();
+            List<Tile> path = new List<Tile>();
+            unvisited.Push(start);
+            while ((unvisited.Count != 0) && (!visited.Contains(target)))
+            {
+                Tile HeadofUnvisited = unvisited.Pop();
+                visited.Add(HeadofUnvisited);
+                path.Add(HeadofUnvisited);
+                List<Tile> Neighbours = mazeGraph.maze.getAllReachable(HeadofUnvisited);
 
-            Tile StartVertex = mazeGraph.GetStartTile();
+                foreach (Tile neighbour in Neighbours)
+                {
+                    if (!unvisited.Contains(neighbour) && !visited.Contains(neighbour))
+                    {
+                        unvisited.Push(neighbour);
+                    }
+                }
+
+            }
+            return visited;
+        }
+
+        public static List<Tile> BreadthFirstSearch(MazeGraph mazeGraph, Tile start, Tile Target)
+        {
+
 
             Queue<Tile> unvisited = new Queue<Tile>();
             List<Tile> visited = new List<Tile>();
 
 
-            unvisited.Enqueue(StartVertex);
+            unvisited.Enqueue(start);
 
             while ((unvisited.Count != 0) && (!visited.Contains(Target)))
             {
@@ -39,52 +61,20 @@ namespace Pacman
 
             return visited;
         }
-        public static List<Tile> DepthFirstSearch(MazeGraph mazeGraph, Tile Target)
+
+        public static List<Tile> GreedyBestFirstSearch(MazeGraph mazeGraph, Tile start, Tile target)
         {
-            List<Tile> Verticies = mazeGraph.GetOpenTiles();
-            List<Edge> Edges = mazeGraph.GetEdges();
-
-            Tile StartVertex = mazeGraph.GetStartTile();
-
-            Stack<Tile> unvisited = new Stack<Tile>();
-            List<Tile> visited = new List<Tile>();
-
-            unvisited.Push(StartVertex);
-            while ((unvisited.Count != 0) && (!visited.Contains(Target)))
-            {
-                Tile HeadofUnvisited = unvisited.Pop();
-                visited.Add(HeadofUnvisited);
-                List<Tile> Neighbours = mazeGraph.maze.getAllReachable(HeadofUnvisited);
-
-                foreach (Tile neighbour in Neighbours)
-                {
-                    if (!unvisited.Contains(neighbour) && !visited.Contains(neighbour))
-                    {
-                        unvisited.Push(neighbour);
-                    }
-                }
-
-            }
-            return visited;
-        }
-
-        public static List<Tile> GreedyBestFirstSearch(MazeGraph mazeGraph, Tile Target)
-        {
-            List<Tile> Verticies = mazeGraph.GetOpenTiles();
-            List<Edge> Edges = mazeGraph.GetEdges();
-
-            Tile StartVertex = mazeGraph.GetStartTile();
 
             List<Tile> visited = new List<Tile>();
-            Dictionary<Tile, int> unvisited = new Dictionary<Tile, int>();
+            SimplePriorityQueue<Tile, int> unvisited = new Priority_Queue.SimplePriorityQueue<Tile, int>();
 
-            unvisited.Add(StartVertex, getManhatenDistance(StartVertex, Target));
+            unvisited.Enqueue(start, getManhatenDistance(start, target));
 
-            while ((unvisited.Count != 0) && (!visited.Contains(Target)))
+            while ((unvisited.Count != 0) && (!visited.Contains(target)))
             {
-                Tile HeadofUnvisited = DequeuePQ(unvisited).Key;
+                Tile HeadofUnvisited = unvisited.Dequeue();
                 visited.Add(HeadofUnvisited);
-                if (HeadofUnvisited.Equals(Target))
+                if (HeadofUnvisited.Equals(target))
                 {
                     break;
                 }
@@ -94,9 +84,11 @@ namespace Pacman
 
                     foreach (Tile neighbour in Neighbours)
                     {
-                        if (!visited.Contains(neighbour))
+                        if (!unvisited.Contains(neighbour) && !visited.Contains(neighbour))
                         {
-                            EnqueuePQ(unvisited, neighbour, getManhatenDistance(neighbour, Target));
+
+                            unvisited.Enqueue(neighbour, getManhatenDistance(neighbour, target));
+
                         }
                     }
                 }
@@ -105,31 +97,6 @@ namespace Pacman
 
             return visited;
         }
-        public static KeyValuePair<Tile, int> DequeuePQ(Dictionary<Tile, int> priorityQueue)
-        {
-            KeyValuePair<Tile, int> result = new KeyValuePair<Tile, int>(null, -1);
-            foreach (KeyValuePair<Tile, int> x in priorityQueue)
-            {
-                if (x.Value < result.Value)
-                {
-                    result = x;
-                }
-            }
-            return result;
-        }
-        public static void EnqueuePQ(Dictionary<Tile, int> priorityQueue, Tile tile, int priority)
-        {
-
-            foreach (KeyValuePair<Tile, int> x in priorityQueue)
-            {
-
-                if (x.Key.Equals(tile) && x.Value > priority)
-                {
-                    priorityQueue.Add(tile, priority);
-                }
-                else if (x.)
-            }
-        }
         public static int getManhatenDistance(Tile from, Tile to)
         {
             int dx = Math.Abs(from.col - to.col);
@@ -137,6 +104,65 @@ namespace Pacman
 
 
             return dx + dy;
+        }
+
+        public static List<List<Tile>> bfs(MazeGraph mazeGraph)
+        {
+            List<Tile> targets = mazeGraph.getAllTargets();
+            Tile StartVertex = mazeGraph.GetStartTile();
+
+            List<List<Tile>> result = new List<List<Tile>>();
+            for (int index = 0; index < targets.Count; index++)
+            {
+                if (index == 0)
+                {
+                    result.Add(BreadthFirstSearch(mazeGraph, StartVertex, targets[index]));
+                }
+                else
+                {
+                    result.Add(BreadthFirstSearch(mazeGraph, targets[index - 1], targets[index]));
+                }
+            }
+            return result;
+        }
+        public static List<List<Tile>> dfs(MazeGraph mazeGraph)
+        {
+            List<Tile> targets = mazeGraph.getAllTargets();
+            Tile StartVertex = mazeGraph.GetStartTile();
+            List<List<Tile>> result = new List<List<Tile>>();
+
+            for (int index = 0; index < targets.Count; index++)
+            {
+                if (index == 0)
+                {
+                    result.Add(DepthFirstSearch(mazeGraph, StartVertex, targets[index]));
+                }
+                else
+                {
+                    result.Add(DepthFirstSearch(mazeGraph, targets[index - 1], targets[index]));
+                }
+            }
+            return result;
+        }
+
+        public static List<List<Tile>> gbf(MazeGraph mazeGraph)
+        {
+            List<Tile> targets = mazeGraph.getAllTargets();
+            Tile StartVertex = mazeGraph.GetStartTile();
+            List<List<Tile>> result = new List<List<Tile>>();
+
+            for (int index = 0; index < targets.Count; index++)
+            {
+                if (index == 0)
+                {
+                    result.Add(GreedyBestFirstSearch(mazeGraph, StartVertex, targets[index]));
+                }
+                else
+                {
+                    result.Add(GreedyBestFirstSearch(mazeGraph, targets[index - 1], targets[index]));
+                }
+            }
+            return result;
         }
 
     }
