@@ -21,8 +21,8 @@ namespace Pacman
                 MazeGraph mazeGraph = new MazeGraph(maze);
                 int size = 0;
                 List<List<Tile>> gbf = Search.gbf(mazeGraph);
-                List<List<Tile>> dfs = Search.dfs(mazeGraph);
-                List<List<Tile>> bfs = Search.bfs(mazeGraph);
+                // List<List<Tile>> dfs = Search.dfs(mazeGraph);
+                // List<List<Tile>> bfs = Search.bfs(mazeGraph);
 
                 foreach (var sequence in gbf)
                 {
@@ -30,17 +30,17 @@ namespace Pacman
                 }
                 Console.WriteLine("Gread Best First " + Maze.Key + ": " + size);
                 size = 0;
-                foreach (var sequence in dfs)
-                {
-                    size += sequence.Count;
-                }
-                Console.WriteLine("Depth First " + Maze.Key + ": " + size);
-                size = 0;
-                foreach (var sequence in bfs)
-                {
-                    size += sequence.Count;
-                }
-                Console.WriteLine("Breadth First " + Maze.Key + ": " + size);
+                // foreach (var sequence in dfs)
+                // {
+                //     size += sequence.Count;
+                // }
+                // Console.WriteLine("Depth First " + Maze.Key + ": " + size);
+                // size = 0;
+                // foreach (var sequence in bfs)
+                // {
+                //     size += sequence.Count;
+                // }
+                // Console.WriteLine("Breadth First " + Maze.Key + ": " + size);
 
 
             }
